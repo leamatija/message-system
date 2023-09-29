@@ -11,8 +11,9 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends MongoRepository<Message,Integer> {
 
-    List<Message> findByStartTimeBetweenOrderByMessageTypePriorityAscStartTimeAsc(LocalDateTime startTime, LocalDateTime endDate);
-    MessageType findFirstByMessageTypePriorityGreaterThanOrderByMessageTypePriorityAsc(LocalDateTime start, LocalDateTime finish);
+    List<Message> findByCreatedAtBetweenAndScheduledFalseOrderByMessageTypePriorityAscCreatedAtAsc(LocalDateTime startTime, LocalDateTime endDate);
+    List<Message> findByCreatedAtBetweenOrderByMessageTypePriorityAscCreatedAtAsc(LocalDateTime startTime, LocalDateTime endDate);
+    List<Message> findAllByScheduledTrueOrderByMessageTypePriorityAsc();
 
 
 }

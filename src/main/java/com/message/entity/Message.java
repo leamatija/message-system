@@ -11,13 +11,15 @@ public class Message {
     @Id
     private String id;
     private String content;
-    private LocalDateTime startTime;
     private MessageType messageType;
+    private boolean scheduled;
+    private LocalDateTime createdAt;
 
-    public Message(String content, LocalDateTime startTime, MessageType messageType) {
+    public Message(String content, MessageType messageType, boolean scheduled, LocalDateTime createdAt) {
         this.content = content;
-        this.startTime = startTime;
+        this.createdAt = createdAt;
         this.messageType = messageType;
+        this.scheduled=scheduled;
     }
 
     public String getId() {
@@ -36,12 +38,12 @@ public class Message {
         this.content = content;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public MessageType getMessageType() {
@@ -52,4 +54,11 @@ public class Message {
         this.messageType = messageType;
     }
 
+    public boolean isScheduled() {
+        return scheduled;
+    }
+
+    public void setScheduled(boolean scheduled) {
+        this.scheduled = scheduled;
+    }
 }
